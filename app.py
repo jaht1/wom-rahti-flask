@@ -6,9 +6,10 @@ load_dotenv()
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
     ret = { 
+        'method': request.method,
         'msg': 'Github webhook works', 
         'env': os.environ.get('ENV_VAR', 'Cannot find variable ENV_VAR') 
     }
